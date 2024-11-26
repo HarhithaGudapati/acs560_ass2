@@ -166,6 +166,12 @@ public class TeamAnalysisServiceImpl implements TeamAnalysisService {
 	    }
 		return false;
 	}
+	@Override
+	public List<Team> getTeamsByYearRange(int startYear, int endYear) {
+		return teamRepository.getTeams().stream()
+	            .filter(team -> team.getYear() >= startYear && team.getYear() <= endYear)
+	            .collect(Collectors.toList());
+	}
 }
 
 
